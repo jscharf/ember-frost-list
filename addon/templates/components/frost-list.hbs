@@ -72,41 +72,19 @@
         }}
       {{/if}}
 
-      {{#if itemMaps}}
-        {{component (get (get itemMaps model.type) 'item')
-          hook=(concat hookPrefix '-item')
-          hookQualifiers=(hash index=index)
-          model=model.content
-          isExpanded=model.states.isExpanded
-          isSelected=model.states.isSelected
-          onSelect=(action '_select')
-        }}
-      {{else}}
-        {{component item
-          hook=(concat hookPrefix '-item')
-          hookQualifiers=(hash index=index)
-          model=model.content
-          isExpanded=model.states.isExpanded
-          isSelected=model.states.isSelected
-          onSelect=(action '_select')
-        }}
-      {{/if}}
+      {{component (if itemMaps (get (get itemMaps model.type) 'item') item)
+        hook=(concat hookPrefix '-item')
+        hookQualifiers=(hash index=index)
+        model=model.content
+        isExpanded=model.states.isExpanded
+        isSelected=model.states.isSelected
+        onSelect=(action '_select')
+      }}
     </div>
 
     {{#if model.states.isExpanded}}
-      {{#if itemMaps}}
-        <div class='frost-list-item-container-expansion'>
-          {{component (get (get itemMaps model.type) 'itemExpansion')
-            hook=(concat hookPrefix '-item-expansion')
-            hookQualifiers=(hash index=index)
-            model=model.content
-            isExpanded=model.states.isExpanded
-            isSelected=model.states.isSelected
-            onSelect=(action '_select')
-          }}
-        </div>
-      {{else}}
-        {{component itemExpansion
+      <div class='frost-list-item-container-expansion'>
+        {{component (if itemMaps (get (get itemMaps model.type) 'itemExpansion') itemExpansion)
           hook=(concat hookPrefix '-item-expansion')
           hookQualifiers=(hash index=index)
           model=model.content
@@ -114,7 +92,7 @@
           isSelected=model.states.isSelected
           onSelect=(action '_select')
         }}
-      {{/if}}
+      </div>
     {{/if}}
   </div>
 {{else}}
