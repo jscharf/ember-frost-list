@@ -43,6 +43,7 @@ export default Component.extend({
     ])),
     onSelectionChange: PropTypes.func,
     itemKey: PropTypes.string,
+    itemMaps: PropTypes.object,
 
     // Options - sub-components
     pagination: PropTypes.EmberComponent,
