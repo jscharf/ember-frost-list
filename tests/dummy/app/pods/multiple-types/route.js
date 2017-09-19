@@ -6,7 +6,8 @@ export default Route.extend({
     return [
       {id: 1, label: 'Hello', type: 'a'},
       {id: 2, label: 'Salut', type: 'b'},
-      {id: 3, label: 'Hola', type: 'c'}
+      {id: 3, label: 'Hola', type: 'c'},
+      {id: 4, label: 'Private', type: 'd'}
     ]
   }
 })
