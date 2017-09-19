@@ -5,7 +5,8 @@ export default Route.extend({
   model () {
     return [
       {id: 1, label: 'Hello', type: 'a'},
-      {id: 2, label: 'Salut', type: 'b'}
+      {id: 2, label: 'Salut', type: 'b'},
+      {id: 3, label: 'Hola', type: 'c'}
     ]
   }
 })

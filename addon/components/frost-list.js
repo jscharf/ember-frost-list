@@ -3,7 +3,7 @@
  */
 
 import Ember from 'ember'
-const {$, A, ObjectProxy, get, isEmpty, isNone, run} = Ember
+const {$, A, ObjectProxy, get, isEmpty, isNone, isPresent, run} = Ember
 import computed, {readOnly} from 'ember-computed-decorators'
 import {Component} from 'ember-frost-core'
 import {selection} from 'ember-frost-list'
@@ -113,6 +113,25 @@ export default Component.extend({
         }
       })
     })
+  },
+
+  @readOnly
+  @computed('itemMaps')
+  isCustomItemExpansion (itemMaps) {
+    if (isEmpty(itemMaps)) {
+      return false
+    }
+
+    for (var itemMap in itemMaps) {
+      const type = get(itemMaps, itemMap)
+      const itemExpansion = get(type, 'itemExpansion')
+
+      if (isPresent(itemExpansion)) {
+        return true
+      }
+    }
+
+    return false
   },
 
   // == Functions =============================================================

@@ -14,11 +14,11 @@
       }}
     {{/if}}
 
-    {{#if (and pagination itemExpansion)}}
+    {{#if (and pagination (or itemExpansion isCustomItemExpansion))}}
       <div class='frost-list-header-divider'></div>
     {{/if}}
 
-    {{#if itemExpansion}}
+    {{#if (or itemExpansion isCustomItemExpansion)}}
       {{frost-list-expansion
         hook=(concat hookPrefix '-expansion')
         onCollapseAll=(action '_collapseAll')
@@ -52,7 +52,7 @@
     data-test={{hook (concat hook '-item-container') index=index }}
   >
     <div class='frost-list-item-container-base'>
-      {{#if itemExpansion}}
+      {{#if (or itemExpansion (get (get itemMaps model.type) 'itemExpansion'))}}
         {{frost-list-item-expansion
           hook=(concat hookPrefix '-expansion')
           hookQualifiers=(hash index=index)
@@ -72,7 +72,7 @@
         }}
       {{/if}}
 
-      {{component (if itemMaps (get (get itemMaps model.type) 'item') item)
+      {{component (if (get (get itemMaps model.type) 'item') (get (get itemMaps model.type) 'item') item)
         hook=(concat hookPrefix '-item')
         hookQualifiers=(hash index=index)
         model=model.content
@@ -84,7 +84,7 @@
 
     {{#if model.states.isExpanded}}
       <div class='frost-list-item-container-expansion'>
-        {{component (if itemMaps (get (get itemMaps model.type) 'itemExpansion') itemExpansion)
+        {{component (if (get (get itemMaps model.type) 'itemExpansion') (get (get itemMaps model.type) 'itemExpansion') itemExpansion)
           hook=(concat hookPrefix '-item-expansion')
           hookQualifiers=(hash index=index)
           model=model.content
