@@ -14,13 +14,15 @@ export default FrostListItem.extend({
   // == PropTypes =============================================================
 
   propTypes: {
-    itemMaps: PropTypes.object
+    itemMaps: PropTypes.object,
+    buttonText: PropTypes.string
   },
 
   getDefaultProps () {
     return {
+      buttonText: 'Click'
     }
-  }
+  },
 
   // == Computed Properties ===================================================
 
@@ -31,5 +33,11 @@ export default FrostListItem.extend({
   // == Lifecycle Hooks =======================================================
 
   // == Actions ===============================================================
+
+  actions: {
+    testBinding () {
+      this.set('buttonText', 'I have been clicked!')
+    }
+  }
 
 })
