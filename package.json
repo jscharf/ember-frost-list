@@ -17,7 +17,8 @@
   },
   "repository": "git@github.com:ciena-frost/ember-frost-list.git",
   "engines": {
-    "node": ">= 6.0.0"
+    "node": ">= 6.0.0",
+    "yarn": ">= 1.0.0"
   },
   "author": "Steven Glanzer (https://github.com/sglanzer)",
   "contributors": [
@@ -79,7 +80,12 @@
     "ember-frost-sort": "7.2.9",
     "ember-math-helpers": "2.0.6",
     "smoke-and-mirrors": "github:ciena-frost/smoke-and-mirrors",
-    "ua-parser-js": "^0.7.12"
+    "ua-parser-js": "^0.7.12",
+    "@bower_components/Faker": "Marak/Faker.js#^3.1.0",
+    "@bower_components/animation-frame": "kof/animation-frame#~0.2.4",
+    "@bower_components/jquery": "jquery/jquery-dist#>=1.5.0",
+    "@bower_components/jquery-mockjax": "jakerella/jquery-mockjax#2.2.1",
+    "@bower_components/node-uuid": "broofa/node-uuid#1.4.7"
   },
   "ember-addon": {
     "configPath": "tests/dummy/config"
